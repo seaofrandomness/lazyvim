@@ -15,3 +15,8 @@ vim.keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Sav
 -- add blank lines without entring insert mode
 vim.keymap.set('n', '<enter>', 'o<esc>')
 vim.keymap.set('n', '<S-enter>', 'O<esc>')
+vim.keymap.set('n', '<C-CR>', 'i<CR><Esc>', { noremap = true, silent = true })
+
+-- Keybinding for formatting selected code block
+-- vim.keymap.set('v', '<leader>f', ":lua vim.lsp.buf.format({ async = true })<CR>", { desc = "Format selected code block" })
+vim.keymap.set('v', '<leader>f', ":lua vim.lsp.buf.format({ async = true, filter = function(client) return client.name == 'null-ls' end })<CR>", { desc = "Format selected code block with Black" })
